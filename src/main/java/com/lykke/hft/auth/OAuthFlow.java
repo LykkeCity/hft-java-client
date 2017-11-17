@@ -13,6 +13,12 @@
 
 package com.lykke.hft.auth;
 
+/**
+ * <p>OAuthFlow class.</p>
+ *
+ * @author niau
+ * @version $Id: $Id
+ */
 public enum OAuthFlow {
     accessCode, implicit, password, application
 }

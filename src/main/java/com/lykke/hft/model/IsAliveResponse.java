@@ -25,6 +25,9 @@ import java.util.List;
 
 /**
  * IsAliveResponse
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class IsAliveResponse {
@@ -40,65 +43,113 @@ public class IsAliveResponse {
   @JsonProperty("IssueIndicators")
   private List<IssueIndicator> issueIndicators = null;
 
+  /**
+   * <p>version.</p>
+   *
+   * @param version a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.IsAliveResponse} object.
+   */
   public IsAliveResponse version(String version) {
     this.version = version;
     return this;
   }
 
-   /**
+  /**
    * Get version
+   *
    * @return version
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getVersion() {
     return version;
   }
 
+  /**
+   * <p>Setter for the field <code>version</code>.</p>
+   *
+   * @param version a {@link java.lang.String} object.
+   */
   public void setVersion(String version) {
     this.version = version;
   }
 
+  /**
+   * <p>env.</p>
+   *
+   * @param env a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.IsAliveResponse} object.
+   */
   public IsAliveResponse env(String env) {
     this.env = env;
     return this;
   }
 
-   /**
+  /**
    * Get env
+   *
    * @return env
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getEnv() {
     return env;
   }
 
+  /**
+   * <p>Setter for the field <code>env</code>.</p>
+   *
+   * @param env a {@link java.lang.String} object.
+   */
   public void setEnv(String env) {
     this.env = env;
   }
 
+  /**
+   * <p>isDebug.</p>
+   *
+   * @param isDebug a {@link java.lang.Boolean} object.
+   * @return a {@link com.lykke.hft.model.IsAliveResponse} object.
+   */
   public IsAliveResponse isDebug(Boolean isDebug) {
     this.isDebug = isDebug;
     return this;
   }
 
-   /**
+  /**
    * Get isDebug
+   *
    * @return isDebug
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Boolean getIsDebug() {
     return isDebug;
   }
 
+  /**
+   * <p>Setter for the field <code>isDebug</code>.</p>
+   *
+   * @param isDebug a {@link java.lang.Boolean} object.
+   */
   public void setIsDebug(Boolean isDebug) {
     this.isDebug = isDebug;
   }
 
+  /**
+   * <p>issueIndicators.</p>
+   *
+   * @param issueIndicators a {@link java.util.List} object.
+   * @return a {@link com.lykke.hft.model.IsAliveResponse} object.
+   */
   public IsAliveResponse issueIndicators(List<IssueIndicator> issueIndicators) {
     this.issueIndicators = issueIndicators;
     return this;
   }
 
+  /**
+   * <p>addIssueIndicatorsItem.</p>
+   *
+   * @param issueIndicatorsItem a {@link com.lykke.hft.model.IssueIndicator} object.
+   * @return a {@link com.lykke.hft.model.IsAliveResponse} object.
+   */
   public IsAliveResponse addIssueIndicatorsItem(IssueIndicator issueIndicatorsItem) {
     if (this.issueIndicators == null) {
       this.issueIndicators = new ArrayList<IssueIndicator>();
@@ -107,20 +158,27 @@ public class IsAliveResponse {
     return this;
   }
 
-   /**
+  /**
    * Get issueIndicators
+   *
    * @return issueIndicators
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<IssueIndicator> getIssueIndicators() {
     return issueIndicators;
   }
 
+  /**
+   * <p>Setter for the field <code>issueIndicators</code>.</p>
+   *
+   * @param issueIndicators a {@link java.util.List} object.
+   */
   public void setIssueIndicators(List<IssueIndicator> issueIndicators) {
     this.issueIndicators = issueIndicators;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -136,12 +194,14 @@ public class IsAliveResponse {
         Objects.equals(this.issueIndicators, isAliveResponse.issueIndicators);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(version, env, isDebug, issueIndicators);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

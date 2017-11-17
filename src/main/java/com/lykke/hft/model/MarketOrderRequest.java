@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * MarketOrderRequest
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class MarketOrderRequest {
@@ -72,79 +75,128 @@ public class MarketOrderRequest {
   @JsonProperty("Volume")
   private Double volume = null;
 
+  /**
+   * <p>assetPairId.</p>
+   *
+   * @param assetPairId a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.MarketOrderRequest} object.
+   */
   public MarketOrderRequest assetPairId(String assetPairId) {
     this.assetPairId = assetPairId;
     return this;
   }
 
-   /**
+  /**
    * Get assetPairId
+   *
    * @return assetPairId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAssetPairId() {
     return assetPairId;
   }
 
+  /**
+   * <p>Setter for the field <code>assetPairId</code>.</p>
+   *
+   * @param assetPairId a {@link java.lang.String} object.
+   */
   public void setAssetPairId(String assetPairId) {
     this.assetPairId = assetPairId;
   }
 
+  /**
+   * <p>asset.</p>
+   *
+   * @param asset a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.MarketOrderRequest} object.
+   */
   public MarketOrderRequest asset(String asset) {
     this.asset = asset;
     return this;
   }
 
-   /**
+  /**
    * Get asset
+   *
    * @return asset
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAsset() {
     return asset;
   }
 
+  /**
+   * <p>Setter for the field <code>asset</code>.</p>
+   *
+   * @param asset a {@link java.lang.String} object.
+   */
   public void setAsset(String asset) {
     this.asset = asset;
   }
 
+  /**
+   * <p>orderAction.</p>
+   *
+   * @param orderAction a {@link com.lykke.hft.model.MarketOrderRequest.OrderActionEnum} object.
+   * @return a {@link com.lykke.hft.model.MarketOrderRequest} object.
+   */
   public MarketOrderRequest orderAction(OrderActionEnum orderAction) {
     this.orderAction = orderAction;
     return this;
   }
 
-   /**
+  /**
    * Get orderAction
+   *
    * @return orderAction
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public OrderActionEnum getOrderAction() {
     return orderAction;
   }
 
+  /**
+   * <p>Setter for the field <code>orderAction</code>.</p>
+   *
+   * @param orderAction a {@link com.lykke.hft.model.MarketOrderRequest.OrderActionEnum} object.
+   */
   public void setOrderAction(OrderActionEnum orderAction) {
     this.orderAction = orderAction;
   }
 
+  /**
+   * <p>volume.</p>
+   *
+   * @param volume a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.MarketOrderRequest} object.
+   */
   public MarketOrderRequest volume(Double volume) {
     this.volume = volume;
     return this;
   }
 
-   /**
+  /**
    * Get volume
+   *
    * @return volume
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Double getVolume() {
     return volume;
   }
 
+  /**
+   * <p>Setter for the field <code>volume</code>.</p>
+   *
+   * @param volume a {@link java.lang.Double} object.
+   */
   public void setVolume(Double volume) {
     this.volume = volume;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -160,12 +212,14 @@ public class MarketOrderRequest {
         Objects.equals(this.volume, marketOrderRequest.volume);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(assetPairId, asset, orderAction, volume);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

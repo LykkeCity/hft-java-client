@@ -1,25 +1,31 @@
 package com.lykke.hft;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.apache.oltu.oauth2.client.request.OAuthClientRequest.AuthenticationRequestBuilder;
-import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
-
+import com.lykke.hft.auth.ApiKeyAuth;
+import com.lykke.hft.auth.HttpBasicAuth;
+import com.lykke.hft.auth.OAuth;
+import com.lykke.hft.auth.OAuth.AccessTokenListener;
 import feign.Feign;
 import feign.RequestInterceptor;
 import feign.form.FormEncoder;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import feign.slf4j.Slf4jLogger;
-import com.lykke.hft.auth.*;
-import com.lykke.hft.auth.OAuth.AccessTokenListener;
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.AuthenticationRequestBuilder;
+import org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+/**
+ * <p>ApiClient class.</p>
+ *
+ * @author niau
+ * @version $Id: $Id
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class ApiClient {
   public interface Api {}
@@ -29,6 +35,9 @@ public class ApiClient {
   private Map<String, RequestInterceptor> apiAuthorizations;
   private Feign.Builder feignBuilder;
 
+  /**
+   * <p>Constructor for ApiClient.</p>
+   */
   public ApiClient() {
     objectMapper = createObjectMapper();
     apiAuthorizations = new LinkedHashMap<String, RequestInterceptor>();
@@ -38,6 +47,11 @@ public class ApiClient {
                 .logger(new Slf4jLogger());
   }
 
+  /**
+   * <p>Constructor for ApiClient.</p>
+   *
+   * @param authNames an array of {@link java.lang.String} objects.
+   */
   public ApiClient(String[] authNames) {
     this();
     for(String authName : authNames) {
@@ -47,7 +61,8 @@ public class ApiClient {
 
   /**
    * Basic constructor for single auth name
-   * @param authName
+   *
+   * @param authName a {@link java.lang.String} object.
    */
   public ApiClient(String authName) {
     this(new String[]{authName});
@@ -55,8 +70,9 @@ public class ApiClient {
 
   /**
    * Helper constructor for single api key
-   * @param authName
-   * @param apiKey
+   *
+   * @param authName a {@link java.lang.String} object.
+   * @param apiKey a {@link java.lang.String} object.
    */
   public ApiClient(String authName, String apiKey) {
     this(authName);
@@ -65,23 +81,25 @@ public class ApiClient {
 
   /**
    * Helper constructor for single basic auth or password oauth2
-   * @param authName
-   * @param username
-   * @param password
+   *
+   * @param authName a {@link java.lang.String} object.
+   * @param username a {@link java.lang.String} object.
+   * @param password a {@link java.lang.String} object.
    */
   public ApiClient(String authName, String username, String password) {
     this(authName);
     this.setCredentials(username,  password);
   }
 
-  /**
-   * Helper constructor for single password oauth2
-   * @param authName
-   * @param clientId
-   * @param secret
-   * @param username
-   * @param password
-   */
+   /**
+    * Helper constructor for single password oauth2
+    *
+    * @param authName a {@link java.lang.String} object.
+    * @param clientId a {@link java.lang.String} object.
+    * @param secret a {@link java.lang.String} object.
+    * @param username a {@link java.lang.String} object.
+    * @param password a {@link java.lang.String} object.
+    */
    public ApiClient(String authName, String clientId, String secret, String username, String password) {
      this(authName);
      this.getTokenEndPoint()
@@ -91,27 +109,59 @@ public class ApiClient {
             .setPassword(password);
    }
 
+  /**
+   * <p>Getter for the field <code>basePath</code>.</p>
+   *
+   * @return a {@link java.lang.String} object.
+   */
   public String getBasePath() {
     return basePath;
   }
 
+  /**
+   * <p>Setter for the field <code>basePath</code>.</p>
+   *
+   * @param basePath a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.ApiClient} object.
+   */
   public ApiClient setBasePath(String basePath) {
     this.basePath = basePath;
     return this;
   }
 
+  /**
+   * <p>Getter for the field <code>apiAuthorizations</code>.</p>
+   *
+   * @return a {@link java.util.Map} object.
+   */
   public Map<String, RequestInterceptor> getApiAuthorizations() {
     return apiAuthorizations;
   }
 
+  /**
+   * <p>Setter for the field <code>apiAuthorizations</code>.</p>
+   *
+   * @param apiAuthorizations a {@link java.util.Map} object.
+   */
   public void setApiAuthorizations(Map<String, RequestInterceptor> apiAuthorizations) {
     this.apiAuthorizations = apiAuthorizations;
   }
 
+  /**
+   * <p>Getter for the field <code>feignBuilder</code>.</p>
+   *
+   * @return a {@link feign.Feign.Builder} object.
+   */
   public Feign.Builder getFeignBuilder() {
     return feignBuilder;
   }
 
+  /**
+   * <p>Setter for the field <code>feignBuilder</code>.</p>
+   *
+   * @param feignBuilder a {@link feign.Feign.Builder} object.
+   * @return a {@link com.lykke.hft.ApiClient} object.
+   */
   public ApiClient setFeignBuilder(Feign.Builder feignBuilder) {
     this.feignBuilder = feignBuilder;
     return this;
@@ -129,6 +179,11 @@ public class ApiClient {
     return objectMapper;
   }
 
+  /**
+   * <p>Getter for the field <code>objectMapper</code>.</p>
+   *
+   * @return a {@link com.fasterxml.jackson.databind.ObjectMapper} object.
+   */
   public ObjectMapper getObjectMapper(){
     return objectMapper;
   }
@@ -141,7 +196,7 @@ public class ApiClient {
    *    apiClient.setBasePath("http://localhost:8080");
    *    XYZApi api = apiClient.buildClient(XYZApi.class);
    *    XYZResponse response = api.someMethod(...);
-   * @param <T> Type
+   *
    * @param clientClass Client class
    * @return The Client
    */
@@ -181,6 +236,7 @@ public class ApiClient {
 
   /**
    * Helper method to configure the first api key found
+   *
    * @param apiKey API key
    */
   public void setApiKey(String apiKey) {
@@ -196,6 +252,7 @@ public class ApiClient {
 
   /**
    * Helper method to configure the username/password for basic auth or password OAuth
+   *
    * @param username Username
    * @param password Password
    */
@@ -217,6 +274,7 @@ public class ApiClient {
 
   /**
    * Helper method to configure the token endpoint of the first oauth found in the apiAuthorizations (there should be only one)
+   *
    * @return Token request builder
    */
   public TokenRequestBuilder getTokenEndPoint() {
@@ -231,6 +289,7 @@ public class ApiClient {
 
   /**
    * Helper method to configure authorization endpoint of the first oauth found in the apiAuthorizations (there should be only one)
+   *
    * @return Authentication request builder
    */
   public AuthenticationRequestBuilder getAuthorizationEndPoint() {
@@ -245,6 +304,7 @@ public class ApiClient {
 
   /**
    * Helper method to pre-set the oauth access token of the first oauth found in the apiAuthorizations (there should be only one)
+   *
    * @param accessToken Access Token
    * @param expiresIn Validity period in seconds
    */
@@ -260,6 +320,7 @@ public class ApiClient {
 
   /**
    * Helper method to configure the oauth accessCode/implicit flow parameters
+   *
    * @param clientId Client ID
    * @param clientSecret Client secret
    * @param redirectURI Redirect URI
@@ -282,6 +343,7 @@ public class ApiClient {
 
   /**
    * Configures a listener which is notified when a new access token is received.
+   *
    * @param accessTokenListener Acesss token listener
    */
   public void registerAccessTokenListener(AccessTokenListener accessTokenListener) {
@@ -296,6 +358,7 @@ public class ApiClient {
 
   /**
    * Gets request interceptor based on authentication name
+   *
    * @param authName Authentiation name
    * @return Request Interceptor
    */
@@ -305,6 +368,7 @@ public class ApiClient {
 
   /**
    * Adds an authorization to be used by the client
+   *
    * @param authName Authentication name
    * @param authorization Request interceptor
    */

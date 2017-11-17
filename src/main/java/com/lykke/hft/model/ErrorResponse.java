@@ -25,6 +25,9 @@ import java.util.Map;
 
 /**
  * ErrorResponse
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class ErrorResponse {
@@ -34,20 +37,34 @@ public class ErrorResponse {
   @JsonProperty("ModelErrors")
   private Map<String, List<String>> modelErrors = null;
 
-   /**
+  /**
    * Get errorMessage
+   *
    * @return errorMessage
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getErrorMessage() {
     return errorMessage;
   }
 
+  /**
+   * <p>modelErrors.</p>
+   *
+   * @param modelErrors a {@link java.util.Map} object.
+   * @return a {@link com.lykke.hft.model.ErrorResponse} object.
+   */
   public ErrorResponse modelErrors(Map<String, List<String>> modelErrors) {
     this.modelErrors = modelErrors;
     return this;
   }
 
+  /**
+   * <p>putModelErrorsItem.</p>
+   *
+   * @param key a {@link java.lang.String} object.
+   * @param modelErrorsItem a {@link java.util.List} object.
+   * @return a {@link com.lykke.hft.model.ErrorResponse} object.
+   */
   public ErrorResponse putModelErrorsItem(String key, List<String> modelErrorsItem) {
     if (this.modelErrors == null) {
       this.modelErrors = new HashMap<String, List<String>>();
@@ -56,20 +73,27 @@ public class ErrorResponse {
     return this;
   }
 
-   /**
+  /**
    * Get modelErrors
+   *
    * @return modelErrors
-  **/
+   */
   @ApiModelProperty(value = "")
   public Map<String, List<String>> getModelErrors() {
     return modelErrors;
   }
 
+  /**
+   * <p>Setter for the field <code>modelErrors</code>.</p>
+   *
+   * @param modelErrors a {@link java.util.Map} object.
+   */
   public void setModelErrors(Map<String, List<String>> modelErrors) {
     this.modelErrors = modelErrors;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -83,12 +107,14 @@ public class ErrorResponse {
         Objects.equals(this.modelErrors, errorResponse.modelErrors);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(errorMessage, modelErrors);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

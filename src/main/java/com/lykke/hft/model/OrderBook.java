@@ -26,6 +26,9 @@ import org.joda.time.DateTime;
 
 /**
  * OrderBook
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class OrderBook {
@@ -41,65 +44,113 @@ public class OrderBook {
   @JsonProperty("Prices")
   private List<VolumePrice> prices = null;
 
+  /**
+   * <p>assetPair.</p>
+   *
+   * @param assetPair a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.OrderBook} object.
+   */
   public OrderBook assetPair(String assetPair) {
     this.assetPair = assetPair;
     return this;
   }
 
-   /**
+  /**
    * Get assetPair
+   *
    * @return assetPair
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAssetPair() {
     return assetPair;
   }
 
+  /**
+   * <p>Setter for the field <code>assetPair</code>.</p>
+   *
+   * @param assetPair a {@link java.lang.String} object.
+   */
   public void setAssetPair(String assetPair) {
     this.assetPair = assetPair;
   }
 
+  /**
+   * <p>isBuy.</p>
+   *
+   * @param isBuy a {@link java.lang.Boolean} object.
+   * @return a {@link com.lykke.hft.model.OrderBook} object.
+   */
   public OrderBook isBuy(Boolean isBuy) {
     this.isBuy = isBuy;
     return this;
   }
 
-   /**
+  /**
    * Get isBuy
+   *
    * @return isBuy
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Boolean getIsBuy() {
     return isBuy;
   }
 
+  /**
+   * <p>Setter for the field <code>isBuy</code>.</p>
+   *
+   * @param isBuy a {@link java.lang.Boolean} object.
+   */
   public void setIsBuy(Boolean isBuy) {
     this.isBuy = isBuy;
   }
 
+  /**
+   * <p>timestamp.</p>
+   *
+   * @param timestamp a {@link org.joda.time.DateTime} object.
+   * @return a {@link com.lykke.hft.model.OrderBook} object.
+   */
   public OrderBook timestamp(DateTime timestamp) {
     this.timestamp = timestamp;
     return this;
   }
 
-   /**
+  /**
    * Get timestamp
+   *
    * @return timestamp
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public DateTime getTimestamp() {
     return timestamp;
   }
 
+  /**
+   * <p>Setter for the field <code>timestamp</code>.</p>
+   *
+   * @param timestamp a {@link org.joda.time.DateTime} object.
+   */
   public void setTimestamp(DateTime timestamp) {
     this.timestamp = timestamp;
   }
 
+  /**
+   * <p>prices.</p>
+   *
+   * @param prices a {@link java.util.List} object.
+   * @return a {@link com.lykke.hft.model.OrderBook} object.
+   */
   public OrderBook prices(List<VolumePrice> prices) {
     this.prices = prices;
     return this;
   }
 
+  /**
+   * <p>addPricesItem.</p>
+   *
+   * @param pricesItem a {@link com.lykke.hft.model.VolumePrice} object.
+   * @return a {@link com.lykke.hft.model.OrderBook} object.
+   */
   public OrderBook addPricesItem(VolumePrice pricesItem) {
     if (this.prices == null) {
       this.prices = new ArrayList<VolumePrice>();
@@ -108,20 +159,27 @@ public class OrderBook {
     return this;
   }
 
-   /**
+  /**
    * Get prices
+   *
    * @return prices
-  **/
+   */
   @ApiModelProperty(value = "")
   public List<VolumePrice> getPrices() {
     return prices;
   }
 
+  /**
+   * <p>Setter for the field <code>prices</code>.</p>
+   *
+   * @param prices a {@link java.util.List} object.
+   */
   public void setPrices(List<VolumePrice> prices) {
     this.prices = prices;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -137,12 +195,14 @@ public class OrderBook {
         Objects.equals(this.prices, orderBook.prices);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(assetPair, isBuy, timestamp, prices);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

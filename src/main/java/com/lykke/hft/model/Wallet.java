@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Wallet
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class Wallet {
@@ -34,61 +37,98 @@ public class Wallet {
   @JsonProperty("Reserved")
   private Double reserved = null;
 
+  /**
+   * <p>balance.</p>
+   *
+   * @param balance a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.Wallet} object.
+   */
   public Wallet balance(Double balance) {
     this.balance = balance;
     return this;
   }
 
-   /**
+  /**
    * Get balance
+   *
    * @return balance
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Double getBalance() {
     return balance;
   }
 
+  /**
+   * <p>Setter for the field <code>balance</code>.</p>
+   *
+   * @param balance a {@link java.lang.Double} object.
+   */
   public void setBalance(Double balance) {
     this.balance = balance;
   }
 
+  /**
+   * <p>assetId.</p>
+   *
+   * @param assetId a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.Wallet} object.
+   */
   public Wallet assetId(String assetId) {
     this.assetId = assetId;
     return this;
   }
 
-   /**
+  /**
    * Get assetId
+   *
    * @return assetId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAssetId() {
     return assetId;
   }
 
+  /**
+   * <p>Setter for the field <code>assetId</code>.</p>
+   *
+   * @param assetId a {@link java.lang.String} object.
+   */
   public void setAssetId(String assetId) {
     this.assetId = assetId;
   }
 
+  /**
+   * <p>reserved.</p>
+   *
+   * @param reserved a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.Wallet} object.
+   */
   public Wallet reserved(Double reserved) {
     this.reserved = reserved;
     return this;
   }
 
-   /**
+  /**
    * Get reserved
+   *
    * @return reserved
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Double getReserved() {
     return reserved;
   }
 
+  /**
+   * <p>Setter for the field <code>reserved</code>.</p>
+   *
+   * @param reserved a {@link java.lang.Double} object.
+   */
   public void setReserved(Double reserved) {
     this.reserved = reserved;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -103,12 +143,14 @@ public class Wallet {
         Objects.equals(this.reserved, wallet.reserved);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(balance, assetId, reserved);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

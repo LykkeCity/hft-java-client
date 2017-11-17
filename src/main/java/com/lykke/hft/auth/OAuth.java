@@ -28,6 +28,12 @@ import feign.Util;
 import com.lykke.hft.StringUtil;
 
 
+/**
+ * <p>OAuth class.</p>
+ *
+ * @author niau
+ * @version $Id: $Id
+ */
 public class OAuth implements RequestInterceptor {
 
     static final int MILLIS_PER_SECOND = 1000;
@@ -43,11 +49,26 @@ public class OAuth implements RequestInterceptor {
     private AuthenticationRequestBuilder authenticationRequestBuilder;
     private AccessTokenListener accessTokenListener;
 
+    /**
+     * <p>Constructor for OAuth.</p>
+     *
+     * @param client a {@link feign.Client} object.
+     * @param requestBuilder a {@link org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder} object.
+     */
     public OAuth(Client client, TokenRequestBuilder requestBuilder) {
         this.oauthClient = new OAuthClient(new OAuthFeignClient(client));
         this.tokenRequestBuilder = requestBuilder;
     }
 
+    /**
+     * <p>Constructor for OAuth.</p>
+     *
+     * @param client a {@link feign.Client} object.
+     * @param flow a {@link com.lykke.hft.auth.OAuthFlow} object.
+     * @param authorizationUrl a {@link java.lang.String} object.
+     * @param tokenUrl a {@link java.lang.String} object.
+     * @param scopes a {@link java.lang.String} object.
+     */
     public OAuth(Client client, OAuthFlow flow, String authorizationUrl, String tokenUrl, String scopes) {
         this(client, OAuthClientRequest.tokenLocation(tokenUrl).setScope(scopes));
 
@@ -68,10 +89,19 @@ public class OAuth implements RequestInterceptor {
         authenticationRequestBuilder = OAuthClientRequest.authorizationLocation(authorizationUrl);
     }
 
+    /**
+     * <p>Constructor for OAuth.</p>
+     *
+     * @param flow a {@link com.lykke.hft.auth.OAuthFlow} object.
+     * @param authorizationUrl a {@link java.lang.String} object.
+     * @param tokenUrl a {@link java.lang.String} object.
+     * @param scopes a {@link java.lang.String} object.
+     */
     public OAuth(OAuthFlow flow, String authorizationUrl, String tokenUrl, String scopes) {
         this(new Client.Default(null, null), flow, authorizationUrl, tokenUrl, scopes);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void apply(RequestTemplate template) {
         // If the request already have an authorization (eg. Basic auth), do nothing
@@ -87,6 +117,9 @@ public class OAuth implements RequestInterceptor {
         }
     }
 
+    /**
+     * <p>updateAccessToken.</p>
+     */
     public synchronized void updateAccessToken() {
         OAuthJSONAccessTokenResponse accessTokenResponse;
         try {
@@ -102,43 +135,94 @@ public class OAuth implements RequestInterceptor {
         }
     }
 
+    /**
+     * <p>registerAccessTokenListener.</p>
+     *
+     * @param accessTokenListener a {@link com.lykke.hft.auth.OAuth.AccessTokenListener} object.
+     */
     public synchronized void registerAccessTokenListener(AccessTokenListener accessTokenListener) {
         this.accessTokenListener = accessTokenListener;
     }
 
+    /**
+     * <p>Getter for the field <code>accessToken</code>.</p>
+     *
+     * @return a {@link java.lang.String} object.
+     */
     public synchronized String getAccessToken() {
         return accessToken;
     }
 
+    /**
+     * <p>Setter for the field <code>accessToken</code>.</p>
+     *
+     * @param accessToken a {@link java.lang.String} object.
+     * @param expiresIn a {@link java.lang.Long} object.
+     */
     public synchronized void setAccessToken(String accessToken, Long expiresIn) {
         this.accessToken = accessToken;
         this.expirationTimeMillis = System.currentTimeMillis() + expiresIn * MILLIS_PER_SECOND;
     }
 
+    /**
+     * <p>Getter for the field <code>tokenRequestBuilder</code>.</p>
+     *
+     * @return a {@link org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder} object.
+     */
     public TokenRequestBuilder getTokenRequestBuilder() {
         return tokenRequestBuilder;
     }
 
+    /**
+     * <p>Setter for the field <code>tokenRequestBuilder</code>.</p>
+     *
+     * @param tokenRequestBuilder a {@link org.apache.oltu.oauth2.client.request.OAuthClientRequest.TokenRequestBuilder} object.
+     */
     public void setTokenRequestBuilder(TokenRequestBuilder tokenRequestBuilder) {
         this.tokenRequestBuilder = tokenRequestBuilder;
     }
 
+    /**
+     * <p>Getter for the field <code>authenticationRequestBuilder</code>.</p>
+     *
+     * @return a {@link org.apache.oltu.oauth2.client.request.OAuthClientRequest.AuthenticationRequestBuilder} object.
+     */
     public AuthenticationRequestBuilder getAuthenticationRequestBuilder() {
         return authenticationRequestBuilder;
     }
 
+    /**
+     * <p>Setter for the field <code>authenticationRequestBuilder</code>.</p>
+     *
+     * @param authenticationRequestBuilder a {@link org.apache.oltu.oauth2.client.request.OAuthClientRequest.AuthenticationRequestBuilder} object.
+     */
     public void setAuthenticationRequestBuilder(AuthenticationRequestBuilder authenticationRequestBuilder) {
         this.authenticationRequestBuilder = authenticationRequestBuilder;
     }
 
+    /**
+     * <p>Getter for the field <code>oauthClient</code>.</p>
+     *
+     * @return a {@link org.apache.oltu.oauth2.client.OAuthClient} object.
+     */
     public OAuthClient getOauthClient() {
         return oauthClient;
     }
 
+    /**
+     * <p>Setter for the field <code>oauthClient</code>.</p>
+     *
+     * @param oauthClient a {@link org.apache.oltu.oauth2.client.OAuthClient} object.
+     */
     public void setOauthClient(OAuthClient oauthClient) {
         this.oauthClient = oauthClient;
     }
 
+    /**
+     * <p>Setter for the field <code>oauthClient</code>.</p>
+     *
+     * @param client a {@link feign.Client} object.
+     */
     public void setOauthClient(Client client) {
         this.oauthClient = new OAuthClient( new OAuthFeignClient(client));
     }

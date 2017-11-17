@@ -19,9 +19,16 @@ import java.text.FieldPosition;
 import java.util.Date;
 
 
+/**
+ * <p>RFC3339DateFormat class.</p>
+ *
+ * @author niau
+ * @version $Id: $Id
+ */
 public class RFC3339DateFormat extends ISO8601DateFormat {
 
   // Same as ISO8601DateFormat but serializing milliseconds.
+  /** {@inheritDoc} */
   @Override
   public StringBuffer format(Date date, StringBuffer toAppendTo, FieldPosition fieldPosition) {
     String value = ISO8601Utils.format(date, true);

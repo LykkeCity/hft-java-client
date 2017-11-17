@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * VolumePrice
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class VolumePrice {
@@ -31,43 +34,68 @@ public class VolumePrice {
   @JsonProperty("Price")
   private Double price = null;
 
+  /**
+   * <p>volume.</p>
+   *
+   * @param volume a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.VolumePrice} object.
+   */
   public VolumePrice volume(Double volume) {
     this.volume = volume;
     return this;
   }
 
-   /**
+  /**
    * Get volume
+   *
    * @return volume
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Double getVolume() {
     return volume;
   }
 
+  /**
+   * <p>Setter for the field <code>volume</code>.</p>
+   *
+   * @param volume a {@link java.lang.Double} object.
+   */
   public void setVolume(Double volume) {
     this.volume = volume;
   }
 
+  /**
+   * <p>price.</p>
+   *
+   * @param price a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.VolumePrice} object.
+   */
   public VolumePrice price(Double price) {
     this.price = price;
     return this;
   }
 
-   /**
+  /**
    * Get price
+   *
    * @return price
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Double getPrice() {
     return price;
   }
 
+  /**
+   * <p>Setter for the field <code>price</code>.</p>
+   *
+   * @param price a {@link java.lang.Double} object.
+   */
   public void setPrice(Double price) {
     this.price = price;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -81,12 +109,14 @@ public class VolumePrice {
         Objects.equals(this.price, volumePrice.price);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(volume, price);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

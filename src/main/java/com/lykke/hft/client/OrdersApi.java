@@ -16,15 +16,21 @@ import java.util.List;
 import java.util.Map;
 import feign.*;
 
+/**
+ * <p>OrdersApi interface.</p>
+ *
+ * @author niau
+ * @version $Id: $Id
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public interface OrdersApi extends ApiClient.Api {
 
 
   /**
    * Cancel the limit order.
-   * 
-    * @param id Limit order id (Guid) (required)
-    * @param apiKey access token (required)
+   *
+   * @param id Limit order id (Guid) (required)
+   * @param apiKey access token (required)
    */
   @RequestLine("POST /api/Orders/{id}/Cancel")
   @Headers({
@@ -36,9 +42,9 @@ public interface OrdersApi extends ApiClient.Api {
 
   /**
    * Get the order info.
-   * 
-    * @param id Limit order id (Guid) (required)
-    * @param apiKey access token (required)
+   *
+   * @param id Limit order id (Guid) (required)
+   * @param apiKey access token (required)
    * @return LimitOrderState
    */
   @RequestLine("GET /api/Orders/{id}")
@@ -51,9 +57,9 @@ public interface OrdersApi extends ApiClient.Api {
 
   /**
    * Get all client orders.
-   * 
-    * @param apiKey access token (required)
-    * @param status  (optional)
+   *
+   * @param apiKey access token (required)
+   * @param status  (optional)
    * @return List&lt;LimitOrderState&gt;
    */
   @RequestLine("GET /api/Orders?status={status}")
@@ -66,12 +72,13 @@ public interface OrdersApi extends ApiClient.Api {
 
   /**
    * Get all client orders.
-   * 
+   *
    * Note, this is equivalent to the other <code>getOrders</code> method,
    * but with the query parameters collected into a single Map parameter. This
    * is convenient for services with optional query parameters, especially when
-   * used with the {@link GetOrdersQueryParams} class that allows for
+   * used with the {@link com.lykke.hft.client.OrdersApi.GetOrdersQueryParams} class that allows for
    * building up this map in a fluent style.
+   *
    * @param apiKey access token (required)
    * @param queryParams Map of query parameters as name-value pairs
    *   <p>The following elements may be specified in the query map:</p>
@@ -101,9 +108,9 @@ public interface OrdersApi extends ApiClient.Api {
 
   /**
    * Place a limit order.
-   * 
-    * @param apiKey access token (required)
-    * @param order  (optional)
+   *
+   * @param apiKey access token (required)
+   * @param order  (optional)
    * @return UUID
    */
   @RequestLine("POST /api/Orders/limit")
@@ -116,9 +123,9 @@ public interface OrdersApi extends ApiClient.Api {
 
   /**
    * Place a market order.
-   * 
-    * @param apiKey access token (required)
-    * @param order  (optional)
+   *
+   * @param apiKey access token (required)
+   * @param order  (optional)
    * @return ResponseModelDouble
    */
   @RequestLine("POST /api/Orders/market")

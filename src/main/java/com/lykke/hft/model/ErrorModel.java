@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * ErrorModel
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class ErrorModel {
@@ -93,61 +96,98 @@ public class ErrorModel {
   @JsonProperty("Message")
   private String message = null;
 
+  /**
+   * <p>code.</p>
+   *
+   * @param code a {@link com.lykke.hft.model.ErrorModel.CodeEnum} object.
+   * @return a {@link com.lykke.hft.model.ErrorModel} object.
+   */
   public ErrorModel code(CodeEnum code) {
     this.code = code;
     return this;
   }
 
-   /**
+  /**
    * Get code
+   *
    * @return code
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public CodeEnum getCode() {
     return code;
   }
 
+  /**
+   * <p>Setter for the field <code>code</code>.</p>
+   *
+   * @param code a {@link com.lykke.hft.model.ErrorModel.CodeEnum} object.
+   */
   public void setCode(CodeEnum code) {
     this.code = code;
   }
 
+  /**
+   * <p>field.</p>
+   *
+   * @param field a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.ErrorModel} object.
+   */
   public ErrorModel field(String field) {
     this.field = field;
     return this;
   }
 
-   /**
+  /**
    * Get field
+   *
    * @return field
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getField() {
     return field;
   }
 
+  /**
+   * <p>Setter for the field <code>field</code>.</p>
+   *
+   * @param field a {@link java.lang.String} object.
+   */
   public void setField(String field) {
     this.field = field;
   }
 
+  /**
+   * <p>message.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.ErrorModel} object.
+   */
   public ErrorModel message(String message) {
     this.message = message;
     return this;
   }
 
-   /**
+  /**
    * Get message
+   *
    * @return message
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getMessage() {
     return message;
   }
 
+  /**
+   * <p>Setter for the field <code>message</code>.</p>
+   *
+   * @param message a {@link java.lang.String} object.
+   */
   public void setMessage(String message) {
     this.message = message;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -162,12 +202,14 @@ public class ErrorModel {
         Objects.equals(this.message, errorModel.message);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(code, field, message);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

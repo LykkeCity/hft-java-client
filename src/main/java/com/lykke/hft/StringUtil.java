@@ -13,6 +13,12 @@
 
 package com.lykke.hft;
 
+/**
+ * <p>StringUtil class.</p>
+ *
+ * @author niau
+ * @version $Id: $Id
+ */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class StringUtil {
   /**

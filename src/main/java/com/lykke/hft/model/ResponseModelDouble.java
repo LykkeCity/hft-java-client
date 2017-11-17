@@ -23,6 +23,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * ResponseModelDouble
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class ResponseModelDouble {
@@ -32,43 +35,68 @@ public class ResponseModelDouble {
   @JsonProperty("Error")
   private ErrorModel error = null;
 
+  /**
+   * <p>result.</p>
+   *
+   * @param result a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.ResponseModelDouble} object.
+   */
   public ResponseModelDouble result(Double result) {
     this.result = result;
     return this;
   }
 
-   /**
+  /**
    * Get result
+   *
    * @return result
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Double getResult() {
     return result;
   }
 
+  /**
+   * <p>Setter for the field <code>result</code>.</p>
+   *
+   * @param result a {@link java.lang.Double} object.
+   */
   public void setResult(Double result) {
     this.result = result;
   }
 
+  /**
+   * <p>error.</p>
+   *
+   * @param error a {@link com.lykke.hft.model.ErrorModel} object.
+   * @return a {@link com.lykke.hft.model.ResponseModelDouble} object.
+   */
   public ResponseModelDouble error(ErrorModel error) {
     this.error = error;
     return this;
   }
 
-   /**
+  /**
    * Get error
+   *
    * @return error
-  **/
+   */
   @ApiModelProperty(value = "")
   public ErrorModel getError() {
     return error;
   }
 
+  /**
+   * <p>Setter for the field <code>error</code>.</p>
+   *
+   * @param error a {@link com.lykke.hft.model.ErrorModel} object.
+   */
   public void setError(ErrorModel error) {
     this.error = error;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -82,12 +110,14 @@ public class ResponseModelDouble {
         Objects.equals(this.error, responseModelDouble.error);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(result, error);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

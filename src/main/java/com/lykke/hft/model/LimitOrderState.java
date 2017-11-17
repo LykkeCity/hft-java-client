@@ -24,6 +24,9 @@ import org.joda.time.DateTime;
 
 /**
  * LimitOrderState
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class LimitOrderState {
@@ -106,187 +109,308 @@ public class LimitOrderState {
   @JsonProperty("Registered")
   private DateTime registered = null;
 
+  /**
+   * <p>id.</p>
+   *
+   * @param id a {@link java.util.UUID} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState id(UUID id) {
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * Get id
+   *
    * @return id
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public UUID getId() {
     return id;
   }
 
+  /**
+   * <p>Setter for the field <code>id</code>.</p>
+   *
+   * @param id a {@link java.util.UUID} object.
+   */
   public void setId(UUID id) {
     this.id = id;
   }
 
+  /**
+   * <p>clientId.</p>
+   *
+   * @param clientId a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState clientId(String clientId) {
     this.clientId = clientId;
     return this;
   }
 
-   /**
+  /**
    * Get clientId
+   *
    * @return clientId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getClientId() {
     return clientId;
   }
 
+  /**
+   * <p>Setter for the field <code>clientId</code>.</p>
+   *
+   * @param clientId a {@link java.lang.String} object.
+   */
   public void setClientId(String clientId) {
     this.clientId = clientId;
   }
 
+  /**
+   * <p>status.</p>
+   *
+   * @param status a {@link com.lykke.hft.model.LimitOrderState.StatusEnum} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState status(StatusEnum status) {
     this.status = status;
     return this;
   }
 
-   /**
+  /**
    * Get status
+   *
    * @return status
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public StatusEnum getStatus() {
     return status;
   }
 
+  /**
+   * <p>Setter for the field <code>status</code>.</p>
+   *
+   * @param status a {@link com.lykke.hft.model.LimitOrderState.StatusEnum} object.
+   */
   public void setStatus(StatusEnum status) {
     this.status = status;
   }
 
+  /**
+   * <p>assetPairId.</p>
+   *
+   * @param assetPairId a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState assetPairId(String assetPairId) {
     this.assetPairId = assetPairId;
     return this;
   }
 
-   /**
+  /**
    * Get assetPairId
+   *
    * @return assetPairId
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getAssetPairId() {
     return assetPairId;
   }
 
+  /**
+   * <p>Setter for the field <code>assetPairId</code>.</p>
+   *
+   * @param assetPairId a {@link java.lang.String} object.
+   */
   public void setAssetPairId(String assetPairId) {
     this.assetPairId = assetPairId;
   }
 
+  /**
+   * <p>volume.</p>
+   *
+   * @param volume a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState volume(Double volume) {
     this.volume = volume;
     return this;
   }
 
-   /**
+  /**
    * Get volume
+   *
    * @return volume
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Double getVolume() {
     return volume;
   }
 
+  /**
+   * <p>Setter for the field <code>volume</code>.</p>
+   *
+   * @param volume a {@link java.lang.Double} object.
+   */
   public void setVolume(Double volume) {
     this.volume = volume;
   }
 
+  /**
+   * <p>price.</p>
+   *
+   * @param price a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState price(Double price) {
     this.price = price;
     return this;
   }
 
-   /**
+  /**
    * Get price
+   *
    * @return price
-  **/
+   */
   @ApiModelProperty(value = "")
   public Double getPrice() {
     return price;
   }
 
+  /**
+   * <p>Setter for the field <code>price</code>.</p>
+   *
+   * @param price a {@link java.lang.Double} object.
+   */
   public void setPrice(Double price) {
     this.price = price;
   }
 
+  /**
+   * <p>remainingVolume.</p>
+   *
+   * @param remainingVolume a {@link java.lang.Double} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState remainingVolume(Double remainingVolume) {
     this.remainingVolume = remainingVolume;
     return this;
   }
 
-   /**
+  /**
    * Get remainingVolume
+   *
    * @return remainingVolume
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public Double getRemainingVolume() {
     return remainingVolume;
   }
 
+  /**
+   * <p>Setter for the field <code>remainingVolume</code>.</p>
+   *
+   * @param remainingVolume a {@link java.lang.Double} object.
+   */
   public void setRemainingVolume(Double remainingVolume) {
     this.remainingVolume = remainingVolume;
   }
 
+  /**
+   * <p>lastMatchTime.</p>
+   *
+   * @param lastMatchTime a {@link org.joda.time.DateTime} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState lastMatchTime(DateTime lastMatchTime) {
     this.lastMatchTime = lastMatchTime;
     return this;
   }
 
-   /**
+  /**
    * Get lastMatchTime
+   *
    * @return lastMatchTime
-  **/
+   */
   @ApiModelProperty(value = "")
   public DateTime getLastMatchTime() {
     return lastMatchTime;
   }
 
+  /**
+   * <p>Setter for the field <code>lastMatchTime</code>.</p>
+   *
+   * @param lastMatchTime a {@link org.joda.time.DateTime} object.
+   */
   public void setLastMatchTime(DateTime lastMatchTime) {
     this.lastMatchTime = lastMatchTime;
   }
 
+  /**
+   * <p>createdAt.</p>
+   *
+   * @param createdAt a {@link org.joda.time.DateTime} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState createdAt(DateTime createdAt) {
     this.createdAt = createdAt;
     return this;
   }
 
-   /**
+  /**
    * Get createdAt
+   *
    * @return createdAt
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public DateTime getCreatedAt() {
     return createdAt;
   }
 
+  /**
+   * <p>Setter for the field <code>createdAt</code>.</p>
+   *
+   * @param createdAt a {@link org.joda.time.DateTime} object.
+   */
   public void setCreatedAt(DateTime createdAt) {
     this.createdAt = createdAt;
   }
 
+  /**
+   * <p>registered.</p>
+   *
+   * @param registered a {@link org.joda.time.DateTime} object.
+   * @return a {@link com.lykke.hft.model.LimitOrderState} object.
+   */
   public LimitOrderState registered(DateTime registered) {
     this.registered = registered;
     return this;
   }
 
-   /**
+  /**
    * Get registered
+   *
    * @return registered
-  **/
+   */
   @ApiModelProperty(required = true, value = "")
   public DateTime getRegistered() {
     return registered;
   }
 
+  /**
+   * <p>Setter for the field <code>registered</code>.</p>
+   *
+   * @param registered a {@link org.joda.time.DateTime} object.
+   */
   public void setRegistered(DateTime registered) {
     this.registered = registered;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -308,12 +432,14 @@ public class LimitOrderState {
         Objects.equals(this.registered, limitOrderState.registered);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(id, clientId, status, assetPairId, volume, price, remainingVolume, lastMatchTime, createdAt, registered);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

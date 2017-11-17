@@ -7,8 +7,11 @@ import java.util.Collection;
 import java.util.List;
 
 /**
-* Utilities to support Swagger encoding formats in Feign.
-*/
+ * Utilities to support Swagger encoding formats in Feign.
+ *
+ * @author niau
+ * @version $Id: $Id
+ */
 public final class EncodingUtils {
 
   /**
@@ -26,6 +29,7 @@ public final class EncodingUtils {
    *
    * <p>Note, as part of reformatting, it URL encodes the parameters as
    * well.</p>
+   *
    * @param parameters The collection object to be formatted. This object will
    *                   not be changed.
    * @param collectionFormat The Swagger collection format (eg, "csv", "tsv",
@@ -67,6 +71,7 @@ public final class EncodingUtils {
 
   /**
    * URL encode a single query parameter.
+   *
    * @param parameter The query parameter to encode. This object will not be
    *                  changed.
    * @return The URL encoded string representation of the parameter. If the

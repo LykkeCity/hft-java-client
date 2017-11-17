@@ -22,6 +22,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 /**
  * IssueIndicator
+ *
+ * @author niau
+ * @version $Id: $Id
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-11-06T23:34:32.567+02:00")
 public class IssueIndicator {
@@ -31,43 +34,68 @@ public class IssueIndicator {
   @JsonProperty("Value")
   private String value = null;
 
+  /**
+   * <p>type.</p>
+   *
+   * @param type a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.IssueIndicator} object.
+   */
   public IssueIndicator type(String type) {
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
+   *
    * @return type
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getType() {
     return type;
   }
 
+  /**
+   * <p>Setter for the field <code>type</code>.</p>
+   *
+   * @param type a {@link java.lang.String} object.
+   */
   public void setType(String type) {
     this.type = type;
   }
 
+  /**
+   * <p>value.</p>
+   *
+   * @param value a {@link java.lang.String} object.
+   * @return a {@link com.lykke.hft.model.IssueIndicator} object.
+   */
   public IssueIndicator value(String value) {
     this.value = value;
     return this;
   }
 
-   /**
+  /**
    * Get value
+   *
    * @return value
-  **/
+   */
   @ApiModelProperty(value = "")
   public String getValue() {
     return value;
   }
 
+  /**
+   * <p>Setter for the field <code>value</code>.</p>
+   *
+   * @param value a {@link java.lang.String} object.
+   */
   public void setValue(String value) {
     this.value = value;
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -81,12 +109,14 @@ public class IssueIndicator {
         Objects.equals(this.value, issueIndicator.value);
   }
 
+  /** {@inheritDoc} */
   @Override
   public int hashCode() {
     return Objects.hash(type, value);
   }
 
 
+  /** {@inheritDoc} */
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
