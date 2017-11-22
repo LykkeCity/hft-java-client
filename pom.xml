@@ -4,7 +4,7 @@
   <artifactId>hft-client</artifactId>
   <packaging>jar</packaging>
   <name>hft-client</name>
-  <version>1.0.5-SNAPSHOT</version>
+  <version>1.0.5</version>
   <url>https://github.com/LykkeCity/hft-java-client/</url>
   <description>Lykke High Frequence API Java Client </description>
 
@@ -34,7 +34,7 @@
     <url>https://github.com/LykkeCity/hft-java-client.git</url>
     <connection>scm:git:ssh://git@github.com/LykkeCity/hft-java-client.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/LykkeCity/hft-java-client.git</developerConnection>
-    <tag>hft-client-1.0.2</tag>
+    <tag>hft-client-1.0.5</tag>
   </scm>
 
   <build>
