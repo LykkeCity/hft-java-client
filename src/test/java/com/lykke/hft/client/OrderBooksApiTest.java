@@ -2,13 +2,11 @@ package com.lykke.hft.client;
 
 import com.lykke.hft.ApiClient;
 import com.lykke.hft.model.OrderBook;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for OrderBooksApi
@@ -16,10 +14,20 @@ import java.util.Map;
 public class OrderBooksApiTest {
 
     private OrderBooksApi api;
+    private String basePath;
+    private String apiKey;
+    private String walletKey;
+
 
     @Before
     public void setup() {
-        api = new ApiClient().buildClient(OrderBooksApi.class);
+        Environment.load();
+
+        basePath = Environment.getVariable("HFT_API_BASE_PATH");
+        apiKey = Environment.getVariable("HFT_KEY");
+        walletKey= Environment.getVariable("WALLET_KEY");
+
+        api = new ApiClient().setBasePath(basePath).buildClient(OrderBooksApi.class);
     }
 
     
@@ -30,9 +38,10 @@ public class OrderBooksApiTest {
      */
     @Test
     public void orderBooksTest() {
-        // List<OrderBook> response = api.orderBooks();
+        List<OrderBook> response = api.orderBooks();
 
-        // TODO: test validations
+        Assert.assertEquals(response.get(1).getAssetPair(),"AUDCHF");
+
     }
 
     
@@ -43,10 +52,13 @@ public class OrderBooksApiTest {
      */
     @Test
     public void orderBooksIdTest() {
-        String assetPairId = null;
-        // List<OrderBook> response = api.orderBooksId(assetPairId);
+        String assetPairId = "AUDCHF";
 
-        // TODO: test validations
+         List<OrderBook> response = api.orderBooksId(assetPairId);
+
+         Assert.assertEquals(response.get(1).getAssetPair(),"AUDCHF");
+
+
     }
 
     

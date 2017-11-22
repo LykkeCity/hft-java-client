@@ -4,120 +4,110 @@ import com.lykke.hft.ApiClient;
 import com.lykke.hft.model.LimitOrderRequest;
 import com.lykke.hft.model.LimitOrderState;
 import com.lykke.hft.model.MarketOrderRequest;
-import com.lykke.hft.model.ResponseModel;
 import com.lykke.hft.model.ResponseModelDouble;
-import java.util.UUID;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
 /**
  * API tests for OrdersApi
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
 public class OrdersApiTest {
 
     private OrdersApi api;
 
+    private String basePath;
+    private String apiKey;
+    private String walletKey;
+
+    private UUID limitOrderResponse;
+
+
     @Before
     public void setup() {
-        api = new ApiClient().buildClient(OrdersApi.class);
+        Environment.load();
+        basePath = Environment.getVariable("HFT_API_BASE_PATH");
+        apiKey = Environment.getVariable("HFT_KEY");
+        walletKey = Environment.getVariable("WALLET_KEY");
+        api = new ApiClient().setBasePath(basePath).buildClient(OrdersApi.class);
     }
 
-    
-    /**
-     * Cancel the limit order.
-     *
-     * 
-     */
-    @Test
-    public void cancelLimitOrderTest() {
-        UUID id = null;
-        String apiKey = null;
-        // api.cancelLimitOrder(id, apiKey);
-
-        // TODO: test validations
-    }
-
-    
-    /**
-     * Get the order info.
-     *
-     * 
-     */
-    @Test
-    public void getOrderInfoTest() {
-        UUID id = null;
-        String apiKey = null;
-        // LimitOrderState response = api.getOrderInfo(id, apiKey);
-
-        // TODO: test validations
-    }
-
-    
-    /**
-     * Get all client orders.
-     *
-     * 
-     */
-    @Test
-    public void getOrdersTest() {
-        String apiKey = null;
-        String status = null;
-        // List<LimitOrderState> response = api.getOrders(apiKey, status);
-
-        // TODO: test validations
-    }
-
-    /**
-     * Get all client orders.
-     *
-     * 
-     *
-     * This tests the overload of the method that uses a Map for query parameters instead of
-     * listing them out individually.
-     */
-    @Test
-    public void getOrdersTestQueryMap() {
-        String apiKey = null;
-        OrdersApi.GetOrdersQueryParams queryParams = new OrdersApi.GetOrdersQueryParams()
-            .status(null);
-        // List<LimitOrderState> response = api.getOrders(apiKey, queryParams);
-
-    // TODO: test validations
-    }
-    
-    /**
-     * Place a limit order.
-     *
-     * 
-     */
-    @Test
-    public void placeLimitOrderTest() {
-        String apiKey = null;
-        LimitOrderRequest order = null;
-        // UUID response = api.placeLimitOrder(apiKey, order);
-
-        // TODO: test validations
-    }
-
-    
     /**
      * Place a market order.
-     *
-     * 
      */
     @Test
-    public void placeMarketOrderTest() {
-        String apiKey = null;
-        MarketOrderRequest order = null;
-        // ResponseModelDouble response = api.placeMarketOrder(apiKey, order);
+    public void _1placeMarketOrderTest() {
+        MarketOrderRequest order = new MarketOrderRequest();
+        order.assetPairId("BTCUSD");
+        order.setVolume(new Double(0.00001));
+        order.setAsset("BTC");
+        order.setOrderAction(MarketOrderRequest.OrderActionEnum.BUY);
+        ResponseModelDouble response = api.placeMarketOrder(apiKey, order);
 
-        // TODO: test validations
+
     }
 
-    
+
+    /**
+     * Place a limit order.
+     */
+    @Test
+    public void _2placeLimitOrderTest() {
+        LimitOrderRequest order = new LimitOrderRequest();
+        order.assetPairId("BTCUSD");
+        order.setPrice(new Double(8182.74));
+        order.setOrderAction(LimitOrderRequest.OrderActionEnum.BUY);
+        order.setVolume(new Double(0.00001));
+
+        UUID limitOrderResponse = api.placeLimitOrder(apiKey, order);
+        LimitOrderState limitOrderState = api.getOrderInfo(limitOrderResponse, apiKey);
+
+        List<LimitOrderState> limitOrderStateList = api.getOrders(apiKey, limitOrderState.getStatus().toString());
+
+
+    }
+
+
+    /**
+     * Place a limit order.
+     */
+    @Test
+    public void _3placeLimitOrderTest() {
+        LimitOrderRequest order = new LimitOrderRequest();
+        order.assetPairId("BTCUSD");
+        order.setPrice(new Double(8182.75));
+        order.setOrderAction(LimitOrderRequest.OrderActionEnum.SELL);
+        order.setVolume(new Double(0.00001));
+
+        UUID limitOrderResponse = api.placeLimitOrder(apiKey, order);
+        LimitOrderState limitOrderState = api.getOrderInfo(limitOrderResponse, apiKey);
+
+        List<LimitOrderState> limitOrderStateList = api.getOrders(apiKey, limitOrderState.getStatus().toString());
+
+
+
+    }
+
+
 }
+
+
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+

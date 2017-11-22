@@ -2,13 +2,11 @@ package com.lykke.hft.client;
 
 import com.lykke.hft.ApiClient;
 import com.lykke.hft.model.Wallet;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for WalletsApi
@@ -16,10 +14,18 @@ import java.util.Map;
 public class WalletsApiTest {
 
     private WalletsApi api;
+    private String apiKey;
+    private String basePath;
+
 
     @Before
     public void setup() {
-        api = new ApiClient().buildClient(WalletsApi.class);
+        Environment.load();
+         apiKey = Environment.getVariable("HFT_KEY");
+         basePath = Environment.getVariable("HFT_API_BASE_PATH");
+
+
+        api = new ApiClient().setBasePath(basePath).buildClient(WalletsApi.class);
     }
 
     
@@ -30,10 +36,10 @@ public class WalletsApiTest {
      */
     @Test
     public void walletsTest() {
-        String apiKey = null;
-        // List<Wallet> response = api.wallets(apiKey);
+        List<Wallet> response = api.wallets(apiKey);
 
-        // TODO: test validations
+        Assert.assertEquals(response.size(),2);
+
     }
 
     

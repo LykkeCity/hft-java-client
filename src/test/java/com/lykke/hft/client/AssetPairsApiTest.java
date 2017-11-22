@@ -2,13 +2,11 @@ package com.lykke.hft.client;
 
 import com.lykke.hft.ApiClient;
 import com.lykke.hft.model.AssetPairModel;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * API tests for AssetPairsApi
@@ -16,10 +14,15 @@ import java.util.Map;
 public class AssetPairsApiTest {
 
     private AssetPairsApi api;
+    private String basePath;
+
 
     @Before
     public void setup() {
-        api = new ApiClient().buildClient(AssetPairsApi.class);
+        Environment.load();
+        basePath = Environment.getVariable("HFT_API_BASE_PATH");
+        api = new ApiClient().setBasePath(basePath).buildClient(AssetPairsApi.class);
+
     }
 
     
@@ -30,9 +33,9 @@ public class AssetPairsApiTest {
      */
     @Test
     public void assetPairsTest() {
-        // List<AssetPairModel> response = api.assetPairs();
+        List<AssetPairModel> response = api.assetPairs();
 
-        // TODO: test validations
+        Assert.assertTrue("Size more than 1",response.size()>1);
     }
 
     
@@ -44,9 +47,9 @@ public class AssetPairsApiTest {
     @Test
     public void assetPairsidTest() {
         String id = null;
-        // AssetPairModel response = api.assetPairsid(id);
+        AssetPairModel response = api.assetPairsid("BTCUSD");
 
-        // TODO: test validations
+        Assert.assertEquals("BTC/USD",response.getName());
     }
 
     

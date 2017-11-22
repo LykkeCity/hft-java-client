@@ -1,26 +1,25 @@
 package com.lykke.hft.client;
 
 import com.lykke.hft.ApiClient;
-import com.lykke.hft.model.ErrorResponse;
 import com.lykke.hft.model.IsAliveResponse;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import org.junit.Assert;
 /**
  * API tests for IsAliveApi
  */
 public class IsAliveApiTest {
 
     private IsAliveApi api;
-
+    private String basePath;
     @Before
     public void setup() {
-        api = new ApiClient().buildClient(IsAliveApi.class);
+        Environment.load();
+         basePath = Environment.getVariable("HFT_API_BASE_PATH");
+         api = new ApiClient().setBasePath(basePath).buildClient(IsAliveApi.class);
+
+
     }
 
     
@@ -31,9 +30,10 @@ public class IsAliveApiTest {
      */
     @Test
     public void isAliveTest() {
-        // IsAliveResponse response = api.isAlive();
+         IsAliveResponse response = api.isAlive();
 
-        // TODO: test validations
+        Assert.assertEquals("1.0.28.0", response.getVersion());
+
     }
 
     
