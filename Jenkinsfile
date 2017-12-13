@@ -29,12 +29,12 @@ pipeline {
                 runWithMaven("mvn package")
             }
         }
-        stage('verify') {
+        stage('Verify') {
             steps {
                 runWithMaven("mvn verify")
             }
         }
-        stage('install') {
+        stage('Install') {
             steps {
                 runWithMaven("mvn install")
             }
