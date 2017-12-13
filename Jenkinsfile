@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clean') {
             steps {
-                runWithMaven("mvn clean")           Ad
+                runWithMaven("mvn clean")
 
             }
         }
