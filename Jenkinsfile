@@ -1,47 +1,49 @@
-
-
 pipeline {
     agent any
-    stages {
-        stage('Clean') {
-            steps {
-                sh "mvn clean"
+    withMaven(
+            maven: 'M3',
+            mavenLocalRepo: '.repository') {
+        stages {
+            stage('Clean') {
+                steps {
+                    sh "mvn clean"
+                }
             }
-        }
-        stage('Validate') {
-            steps {
-                sh "mvn validate"
+            stage('Validate') {
+                steps {
+                    sh "mvn validate"
+                }
             }
-        }
-        stage('Compile') {
-            steps {
-                sh "mvn compile"
+            stage('Compile') {
+                steps {
+                    sh "mvn compile"
+                }
             }
-        }
-        stage('Test') {
-            steps {
-                sh "mvn test"
+            stage('Test') {
+                steps {
+                    sh "mvn test"
+                }
             }
-        }
-        stage('Package') {
-            steps {
-                sh "mvn package"
+            stage('Package') {
+                steps {
+                    sh "mvn package"
+                }
             }
-        }
-        stage('verify') {
-            steps {
-                sh "mvn package"
+            stage('verify') {
+                steps {
+                    sh "mvn package"
+                }
             }
-        }
-        stage('install') {
-            steps {
-                sh "mvn package"
+            stage('install') {
+                steps {
+                    sh "mvn package"
+                }
             }
-        }
 
-        stage('Release') {
-            steps {
-                sh "mvn -P sign-artifacts release:prepare release:perform"
+            stage('Release') {
+                steps {
+                    sh "mvn -P sign-artifacts release:prepare release:perform"
+                }
             }
         }
     }
