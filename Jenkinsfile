@@ -1,43 +1,42 @@
 pipeline {
     agent any
-        stages {
-            withMaven(
-                    maven: 'M3',
-                    mavenLocalRepo: '.repository') {
+    stages {
+        stage('Clean') {
+            steps {
+                runWithMaven("mvn clean")
 
-                stage('Clean') {
-                steps {
-                    sh "mvn clean"
-                }
             }
-            stage('Validate') {
+        }
+        stage('Validate') {
+            steps {
                 steps {
-                    sh "mvn validate"
+                    runWithMaven("mvn validate")
+
                 }
             }
             stage('Compile') {
                 steps {
-                    sh "mvn compile"
+                    runWithMaven("mvn compile")
                 }
             }
             stage('Test') {
                 steps {
-                    sh "mvn test"
+                    runWithMaven("mvn test")
                 }
             }
             stage('Package') {
                 steps {
-                    sh "mvn package"
+                    runWithMaven("mvn package")
                 }
             }
             stage('verify') {
                 steps {
-                    sh "mvn package"
+                    runWithMaven("mvn verify")
                 }
             }
             stage('install') {
                 steps {
-                    sh "mvn package"
+                    runWithMaven("mvn install")
                 }
             }
 
@@ -47,6 +46,13 @@ pipeline {
                 }
             }
         }
+
     }
 }
-
+    def runWithMaven (String command){
+        withMaven(
+                maven: 'M3',
+                mavenLocalRepo: '.repository') {
+            sh "$command"
+        }
+    }
