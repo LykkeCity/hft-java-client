@@ -1,10 +1,11 @@
 pipeline {
     agent any
-    withMaven(
-            maven: 'M3',
-            mavenLocalRepo: '.repository') {
         stages {
-            stage('Clean') {
+            withMaven(
+                    maven: 'M3',
+                    mavenLocalRepo: '.repository') {
+
+                stage('Clean') {
                 steps {
                     sh "mvn clean"
                 }
