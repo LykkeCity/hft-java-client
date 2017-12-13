@@ -9,11 +9,10 @@ pipeline {
         }
         stage('Validate') {
             steps {
-                steps {
-                    runWithMaven("mvn validate")
+                runWithMaven("mvn validate")
 
-                }
             }
+
         }
         stage('Compile') {
             steps {
