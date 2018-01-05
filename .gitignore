@@ -1,4 +1,4 @@
-/src/main/resources/hft-client.properties
+/hft-client.properties
 *.class
 
 # Mobile Tools for Java (J2ME)

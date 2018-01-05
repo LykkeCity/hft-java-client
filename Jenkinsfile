@@ -1,4 +1,3 @@
-String id ="hft-client.properties";
 
 node {
     stage('Checkout'){
@@ -8,7 +7,6 @@ node {
 
         configFileProvider([configFile(fileId: 'hft-client.properties',variable: 'hftProperties')])  {
             echo "$hftProperties"
-            sh "cp $hftProperties src/main/resources/hft-client.properties"
         }
     }
 
@@ -22,7 +20,7 @@ node {
     }
 
     stage('Test') {
-        runWithMaven("mvn test")
+        runWithMaven("mvn -DHFT-CLIENT-PROPERTIES=${hftProperties} test")
 
     }
 
