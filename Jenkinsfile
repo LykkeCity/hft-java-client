@@ -3,12 +3,7 @@ node {
     stage('Checkout'){
         checkout scm
     }
-    stage('Prepare'){
 
-        configFileProvider([configFile(fileId: 'hft-client.properties',variable: 'hftProperties')])  {
-            echo "$hftProperties"
-        }
-    }
 
     stage('Validate') {
         runWithMaven("mvn validate")
@@ -20,8 +15,11 @@ node {
     }
 
     stage('Test') {
-        runWithMaven("mvn -DHFT-CLIENT-PROPERTIES=${hftProperties} test")
+        configFileProvider([configFile(fileId: 'hft-client.properties',variable: 'hftProperties')])  {
+            echo "$hftProperties"
 
+            runWithMaven("mvn -DHFT-CLIENT-PROPERTIES=${hftProperties} test")
+        }
     }
 
     stage('Package') {
@@ -36,7 +34,7 @@ node {
 
     stage('Realease') {
         echo "Realse not yet done!"
-        //runWithMaven("mvn relase -B")
+        //runWithMaven("mvn release -B prepare perform ")
 
     }
 
