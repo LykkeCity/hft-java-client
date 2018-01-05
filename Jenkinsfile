@@ -1,54 +1,34 @@
-pipeline {
-    agent any
-    stages {
-        stage('Clean') {
-            steps {
-                runWithMaven("mvn clean")
+String id ="hft-client.properties";
 
-            }
-        }
-        stage('Validate') {
-            steps {
-                runWithMaven("mvn validate")
+node {
+    echo "ID: ${id}";
+    stage('Prepare'){
 
-            }
+        configFileProvider([configFile(fileId: 'hft-client.properties',variable: 'hftProperties')])  {
+            echo "$hftProperties"
+            sh "cp $hftProperties src/main/resources/hft-client.properties"
+        }
+    }
 
-        }
-        stage('Compile') {
-            steps {
-                runWithMaven("mvn compile")
-            }
-        }
-        stage('Test') {
-            steps {
-                runWithMaven("mvn test")
-            }
-        }
-        stage('Package') {
-            steps {
-                runWithMaven("mvn package")
-            }
-        }
-        stage('Verify') {
-            steps {
-                runWithMaven("mvn verify")
-            }
-        }
-        stage('Install') {
-            steps {
-                runWithMaven("mvn install")
-            }
-        }
+    stage('Validate') {
+        runWithMaven("mvn validate")
 
-        stage('Release') {
-            steps {
-                sh "mvn -P sign-artifacts release:prepare release:perform"
-            }
-        }
 
 
     }
+
+    stage('Compile') {
+        runWithMaven("mvn compile")
+
+    }
+
+    stage('Test') {
+        runWithMaven("mvn test")
+
+    }
+
 }
+
 
 def runWithMaven(String command) {
     withMaven(
