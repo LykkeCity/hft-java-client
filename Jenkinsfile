@@ -1,7 +1,17 @@
 
+
+
+
+
 node {
     stage('Checkout'){
         checkout scm
+        def pom = readMavenPom file: 'pom.xml'
+        echo "POM current version: $pom.version"
+        def currentDevelopmentVersion  = pom.version;
+        def releaseVersion = currentDevelopmentVersion.substring(0, currentDevelopmentVersion.indexOf('-'));
+        echo "Release version: $releaseVersion"
+
     }
 
 
@@ -34,7 +44,7 @@ node {
 
     stage('Realease') {
         echo "Realse not yet done!"
-        //runWithMaven("mvn release -B prepare perform ")
+        //runWithMaven("mvn release -B -P sign-artifacts -B release:prepare release:perform ")
 
     }
 
