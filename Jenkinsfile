@@ -1,7 +1,9 @@
 String id ="hft-client.properties";
 
 node {
-    echo "ID: ${id}";
+    stage('Checkout'){
+        checkout scm
+    }
     stage('Prepare'){
 
         configFileProvider([configFile(fileId: 'hft-client.properties',variable: 'hftProperties')])  {
@@ -12,9 +14,6 @@ node {
 
     stage('Validate') {
         runWithMaven("mvn validate")
-
-
-
     }
 
     stage('Compile') {
@@ -24,6 +23,22 @@ node {
 
     stage('Test') {
         runWithMaven("mvn test")
+
+    }
+
+    stage('Package') {
+        runWithMaven("mvn package")
+
+    }
+
+    stage('Install') {
+        runWithMaven("mvn install")
+
+    }
+
+    stage('Realease') {
+        echo "Realse not yet done!"
+        //runWithMaven("mvn relase -B")
 
     }
 
